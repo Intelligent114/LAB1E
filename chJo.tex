@@ -1,0 +1,300 @@
+\chapter{Jordan标准型}
+
+    \section{多项式矩阵的相抵}
+
+        \begin{definition}[多项式矩阵]
+            设$\mathbb{F}$是数域，$\lambda$是未定元，数域$\mathbb{F}$上所有关于未定元$\lambda$的多项式集合记为$\mathbb{F}[\lambda]$。取$m\times n$个多项式$a_{ij}(\lambda)\in\mathbb{F}[\lambda], 1\leq i\leq m, 1\leq j \leq n$，则
+            \[A(\lambda)=\begin{bmatrix}a_{11}(\lambda)&a_{12}(\lambda)&\cdots&a_{1n}(\lambda)\\a_{21}(\lambda)&a_{22}(\lambda)&\cdots&a_{2n}(\lambda)\\\vdots&\vdots&&\vdots\\a_{m1}(\lambda)&a_{m2}(\lambda)&\cdots&a_{mn}(\lambda)\end{bmatrix}\]
+            称为数域$\mathbb{F}$上的$m\times n$多项式矩阵，简称$\lambda$矩阵或多项式矩阵。数域$\mathbb{F}$上所有$m\times n$多项式矩阵的集合记为$(\mathbb{F}[\lambda])^{m\times n}$。
+        \end{definition}
+
+        多项式矩阵的加法，纯量与多项式矩阵的乘法，多项式矩阵的乘法以及多项式矩阵的行列式，转置，迹的定义和通常数域$\mathbb{F}$上方阵相同，但应注意多项式矩阵的行列式，迹是关于未定元$\lambda$的多项式。
+
+        \begin{definition}[多项式矩阵的秩]
+            设$A(\lambda)\in(\mathbb{F}[\lambda])^{m\times n}$，$A(\lambda)$的秩是$A(\lambda)$中非零子式的最高阶数，仍记为$\mathrm{rank}\;A(\lambda)$。若$n$阶方阵$A(\lambda)$的秩等于$n$，则称$A(\lambda)$是满秩的。显然$A(\lambda)$满秩$\Leftrightarrow \det A(\lambda)\neq0$。
+        \end{definition}
+
+        \begin{definition}[多项式矩阵的逆矩阵]
+            对于$n$阶方阵$A(\lambda)\in(\mathbb{F}[\lambda])^{n\times n}$，若存在$n$阶方阵$B(\lambda)\in(\mathbb{F}[\lambda])^{n\times n}$，使得$A(\lambda)B(\lambda)=B(\lambda)A(\lambda)=I_n$，则称$A(\lambda)$是可逆的，$B(\lambda)$是$A(\lambda)$的逆矩阵，记为$A(\lambda)^{-1}$。
+        \end{definition}
+
+        \begin{theorem}
+            \label{thm:poly_matrix_invertible}
+            设$A(\lambda)\in(\mathbb{F}[\lambda])^{n\times n}$，则$A(\lambda)$可逆$\Leftrightarrow\det A(\lambda)\in\mathbb{F}\backslash\{0\}$。
+        \end{theorem}
+
+        \begin{proof}
+            $ $
+
+            $\Rightarrow$：设$A(\lambda)$可逆，则存在$B(\lambda)\in(\mathbb{F}[\lambda])^{n\times n}$，使$A(\lambda)B(\lambda)=B(\lambda)A(\lambda)=I_n$。由$\det A(\lambda)\det B(\lambda)=\det I_n=1, $
+
+            $\qquad\det A(\lambda), \det B(\lambda)\in\mathbb{F}[\lambda], \deg(1)=0$，有$\deg(A(\lambda))=\deg(B(\lambda))=0$，故$\det A(\lambda)\in\mathbb{F}\backslash\{0\}$。
+
+            $\Leftarrow$：设$\det A(\lambda)\in\mathbb{F}\backslash\{0\}$，设$a=\det A(\lambda)$，考虑$A^*(\lambda)$是$A(\lambda)$的伴随矩阵，由$A^*(\lambda)$中元素是$A(\lambda)$的$n-1$
+
+            $\qquad$阶子式，故$A^*(\lambda),\dfrac1a A^*(\lambda)\in(\mathbb{F}[\lambda])^{n\times n}$，而$A(\lambda)\left(\dfrac1a A^*(\lambda)\right)=I_n=\left(\dfrac1a A^*(\lambda)\right)A(\lambda)$，故$A(\lambda)$可逆，
+
+            $\qquad A(\lambda)^{-1}=\dfrac1a A^*(\lambda)$。
+        \end{proof}
+
+        \begin{note}
+            若$A(\lambda)$可逆，则$A(\lambda)$满秩，但是反之不成立。这与通常方阵不同。
+        \end{note}
+
+        \begin{definition}[多项式矩阵的初等变换，初等$\lambda$矩阵]
+            多项式矩阵的初等$\lambda$变换分为以下三类：
+            \begin{enumerate}
+                \item 对调矩阵的两行或两列；
+                \item 把某一行或某一列乘以非零多项式加到另一行或另一列；
+                \item 以非零常数乘矩阵的某一行或某一列。
+            \end{enumerate}
+            依次称为对多项式矩阵的第一。第二和第三种初等变换。
+
+            记$P_{ij}=I_n+E_{ij}+E_{ji}-E_{ii}-E_{jj}, T_{ij}(f(\lambda))=I_n+f(\lambda)E_{ij}, D_i(a)=I_n+(a-1)E_{ii}$，则$P_{ij}, T_{ij}(f(\lambda)), D_i(a)$被称为第一，第二，第三类初等$\lambda$矩阵。
+        \end{definition}
+
+        分别用第一、第二、第三种初等$\lambda$矩阵左乘$A(\lambda)$，相当于对$A(\lambda)$做第一、第二、第三种初等行变换。分别用第一、第二、第三种初等$\lambda$矩阵右乘$A(\lambda)$，相当于对$A(\lambda)$做第一、第二、第三种初等列变换。
+
+        初等$\lambda$变换不改变多项式矩阵的秩。
+
+        \begin{theorem}
+            \label{thm:poly_matrix_rank}
+            设$m\times n$多项式矩阵$A(\lambda)$的秩为$r$，则$A(\lambda)$可以经过有限次初等$\lambda$变换化为$\begin{bmatrix}D(\lambda)&O\\O&O\end{bmatrix}$的形式，其中$D(\lambda)=\mathrm{diag}(d_1(\lambda),\cdots,d_r(\lambda))$是$r$阶对角多项式方阵，$d_1(\lambda),\cdots,d_r(\lambda)$是首一多项式且$d_j(\lambda)|d_{j+1}(\lambda),\forall j=1,\cdots,r-1$。
+
+            等价的说，存在$s,t\in\mathbb{N}$，$m$阶初等$\lambda$方阵$P_1(\lambda),\cdots,P_s(\lambda)$和$n$阶初等$\lambda$方阵$Q_1(\lambda),\cdots,Q_t(\lambda)$使得
+
+            $P_s(\lambda)\cdots P_1(\lambda)A(\lambda)Q_1(\lambda)\cdots Q_t(\lambda)=\begin{bmatrix}D(\lambda)&O\\O&O\end{bmatrix}$。
+        \end{theorem}
+
+        \begin{proof}
+            此处略去。
+        \end{proof}
+
+        \begin{theorem}
+            设$A(\lambda)\in(\mathbb{F}[\lambda])^{n\times n}$，则$A(\lambda)$可逆$\Leftrightarrow A(\lambda)$可表示为有限个初等$\lambda$矩阵的乘积。
+        \end{theorem}
+
+        \begin{proof}
+            由定理\ref{thm:poly_matrix_rank}易得。
+        \end{proof}
+
+        \begin{definition}[多项式矩阵的相抵]
+            设$A(\lambda), B(\lambda)\in(\mathbb{F}[\lambda])^{m\times n}$，若$A(\lambda)$可经有限次初等变换化为$B(\lambda)$，即$\exists P(\lambda)\in(\mathbb{F}[\lambda])^{m\times m}, Q(\lambda)\in(\mathbb{F}[\lambda])^{n\times n}$可逆，使得$P(\lambda)A(\lambda)Q(\lambda)=B(\lambda)$，则称$A(\lambda)$与$B(\lambda)$相抵。
+        \end{definition}
+
+        容易验证，多项式矩阵的相抵关系是等价关系。于是，根据多项式矩阵的相抵关系可以把数域$\mathbb{F}$上所有$m\times n$多项式矩阵分类：彼此相抵的多项式矩阵属于同一类，不相抵的多项式矩阵属于不同的类。和一般数域上的相抵一样，两个基本问题是：多项式矩阵在相抵下的标准型是什么？多项式矩阵在相抵下的全系不变量是什么？
+
+        首先，由$A(\lambda)=I_2,B(\lambda)=\mathrm{diag}(1,\lambda)$不相抵可以得出多项式矩阵的秩不足以构成多项式矩阵的全系不变量，所以必须寻找多项式矩阵在相抵下的其他不变量。
+
+        \begin{definition}
+            设$A(\lambda)\in(\mathbb{F}[\lambda])^{m\times n}$，多项式矩阵$A(\lambda)$中所有$k$阶非零子式的最大公因子称为$A(\lambda)$的$k$阶行列式因子，记为$D_k(\lambda)$。若$A(\lambda)$的所有$k$阶子式均为0，则约定$D_k(\lambda)=0$。
+        \end{definition}
+
+        容易验证，若$\mathrm{rank}\;A(\lambda)=r$，记$\min\{m,n\}=s$，则$D_{r+1}(\lambda)=\cdots=D_s(\lambda)=0$，对于$1\leq k\leq r$，$D_k(\lambda)$是非零多项式，且$D_k(\lambda)|D_{k+1}(\lambda),\forall k=1,\cdots,r-1$。
+
+        我们先介绍一个引理。
+
+        \begin{lemma}[Binet-Cauchy公式]
+            \label{lemma:binet_cauchy}
+            对$A\in\mathbb{F}^{p\times q}, B\in\mathbb{F}^{q\times p}$，有
+            \[
+                \det (AB)=\begin{cases}0,&q<p\\\det A\cdot\det B,&q=p\\\sum\limits_{1\leq j_1<j_2<\cdots<j_p\leq q}A\begin{pmatrix}1&2&\cdots&p\\j_1&j_2&\cdots&j_p\end{pmatrix}B\begin{pmatrix}j_1&j_2&\cdots&j_p\\1&2&\cdots&p\end{pmatrix},&q>p\end{cases}
+            \]
+        \end{lemma}
+
+        \begin{proof}
+            此处略去。
+        \end{proof}
+
+        \begin{proposition}
+            \label{prop:poly_matrix_mul}
+            对$A\in\mathbb{F}^{p\times q}, B\in\mathbb{F}^{q\times p}$，记$C=AB$，则对$C$的$r$阶子式有
+             \[
+                C\begin{pmatrix}i_1&i_2&\cdots&i_r\\j_1&j_2&\cdots&j_r\end{pmatrix}=\begin{cases}0,&q<p\\\sum\limits_{1\leq k_1<k_2<\cdots<k_r\leq q}A\begin{pmatrix}i_1&i_2&\cdots&i_r\\k_1&k_2&\cdots&k_r\end{pmatrix}B\begin{pmatrix}k_1&k_2&\cdots&k_r\\j_1&j_2&\cdots&j_r\end{pmatrix},&q\geq p\end{cases}
+            \]
+        \end{proposition}
+
+        \begin{proof}
+            对$A_1=\begin{bmatrix}a_{i_1 1}&a_{i_1 2}&\cdots&a_{i_1 q}\\a_{i_2 1}&a_{i_2 2}&\cdots&a_{i_2 q}\\\vdots&\vdots&&\vdots\\a_{i_r 1}&a_{i_r 2}&\cdots&a_{i_r q}\end{bmatrix},B_1=\begin{bmatrix}b_{1j_1}&b_{1j_2}&\cdots&b_{1j_r}\\b_{2j_1}&b_{2j_2}&\cdots&b_{2j_r}\\\vdots&\vdots&&\vdots\\b_{qj_1}&b_{qj_2}&\cdots&b_{qj_r}\end{bmatrix}$使用引理\ref{lemma:binet_cauchy}即可。
+        \end{proof}
+
+        \begin{theorem}
+            \label{thm:poly_matrix_invariant}
+            设$A(\lambda),B(\lambda)\in(\mathbb{F}[\lambda])^{m\times n}$，则$A(\lambda),B(\lambda)$相抵$\Leftrightarrow A(\lambda),B(\lambda)$的行列式因子相同。换言之，多项式矩阵的行列式因子是其在相抵下的全系不变量。
+        \end{theorem}
+
+        \begin{proof}
+            以下设$A(\lambda),B(\lambda)$的$k$阶行列式因子分别为$D_k(\lambda),\tilde{D}_k(\lambda)$。
+
+            必要性$\quad$设多项式矩阵$A(\lambda)$与$B(\lambda)$相抵，则存在可逆多项式矩阵$P(\lambda)\in(\mathbb{F}[\lambda])^{m\times m},Q(\lambda)\in(\mathbb{F}[\lambda])^{n\times n}$，使得$P(\lambda)A(\lambda)Q(\lambda)=B(\lambda)$。由命题\ref{prop:poly_matrix_mul}有：
+            \begin{flalign*}
+                &\quad B(\lambda)\begin{pmatrix}i_1&i_2&\cdots&i_k\\j_1&j_2&\cdots&j_k\end{pmatrix}=\sum_{1\leq l_1<l_2<\cdots<l_k\leq m}P(\lambda)\begin{pmatrix}i_1&i_2&\cdots&i_k\\l_1&l_2&\cdots&l_k\end{pmatrix}\left((A(\lambda)Q(\lambda))\begin{pmatrix}l_1&l_2&\cdots&l_k\\j_1&j_2&\cdots&j_k\end{pmatrix}\right) \\
+                &=\sum_{1\leq l_1<l_2<\cdots<l_k\leq m}\sum_{1\leq t_1<t_2<\cdots<t_k\leq n}P(\lambda)\begin{pmatrix}i_1&i_2&\cdots&i_k\\l_1&l_2&\cdots&l_k\end{pmatrix}A(\lambda)\begin{pmatrix}l_1&l_2&\cdots&l_k\\t_1&t_2&\cdots&t_k\end{pmatrix}Q(\lambda)\begin{pmatrix}t_1&t_2&\cdots&t_k\\j_1&j_2&\cdots&j_k\end{pmatrix}
+            \end{flalign*}
+
+            若$A(\lambda)$的$k$阶行列式因子$D_k(\lambda)=0$，则$A(\lambda)$的每个$k$阶子式为0，故$B(\lambda)$的每个$k$阶子式为0，即$B(\lambda)$的$k$阶行列式因子$\tilde{D}_k(\lambda)=0$。反之亦然。
+
+            若$D_k(\lambda)\neq0$，则$D_k(\lambda)$整除每个$A(\lambda)$的$k$阶子式，故$D_k(\lambda)$整除每个$B(\lambda)$的$k$阶子式，即$D_k(\lambda)$整除$B(\lambda)$的每个$k$阶子式，故$\tilde{D}_k(\lambda)|D_k(\lambda)$。同理可证$D_k(\lambda)|\tilde{D}_k(\lambda)$，又作为最大公因子，$D_k(\lambda),\tilde{D}_k(\lambda)$均为首一多项式，故$D_k(\lambda)=\tilde{D}_k(\lambda)$。
+
+            这说明$A(\lambda),B(\lambda)$的行列式因子相同。
+
+            充分性$\quad$若$A(\lambda),B(\lambda)$的行列式因子相同，并设$\mathrm{rank}\;A(\lambda)=r$，则由定理\ref{thm:poly_matrix_rank}，$A(\lambda)$相抵于如下多项式矩阵：
+
+            \[
+                C(\lambda)=\begin{bmatrix}D(\lambda)&O\\O&O\end{bmatrix}=\begin{bmatrix}\mathrm{diag}(d_1(\lambda),d_2(\lambda),\cdots,d_r(\lambda))&O\\O&O\end{bmatrix}
+            \]
+
+            多项式矩阵$C(\lambda)$的$k$阶行列式因子同样为$D_k(\lambda)$，易得$D_1(\lambda)=d_1(\lambda),\cdots,D_r(\lambda)=\prod\limits_{j=1}^{r}d_j(\lambda),D_r(\lambda)=\cdots=D_{\min\{m,n\}}(\lambda)=0\Rightarrow d_k(\lambda)=\dfrac{D_k(\lambda)}{D_{k-1}(\lambda)}$由$D_k(\lambda)$唯一确定($D_0(\lambda)=1$)。
+
+            由于$A(\lambda),B(\lambda)$的行列式因子相同，有$B(\lambda),C(\lambda)$相抵，由传递性，$A(\lambda),B(\lambda)$相抵。
+        \end{proof}
+
+        由充分性证明的启发，可以引进：
+
+        \begin{definition}[不变因子]
+            设多项式矩阵$A(\lambda)\in(\mathbb{F})^{m\times n}$的秩为$r$，$k$阶行列式因子为$D_k(\lambda)$，约定$D_0(\lambda)=1$，定义$d_k(\lambda)=\dfrac{D_k(\lambda)}{D_{k-1}(\lambda)}$为$A(\lambda)$的不变因子。
+        \end{definition}
+
+        \begin{theorem}
+            \label{thm:poly_matrix_Smith}
+            设多项式矩阵$A(\lambda)\in(\mathbb{F})^{m\times n}$的秩为$r$，阶不变因子为$d_1(\lambda),\cdots,d_r(\lambda)$，则$A(\lambda)$相抵于Smith标准型$\begin{bmatrix}\mathrm{diag}(d_1(\lambda),d_2(\lambda),\cdots,d_r(\lambda))&O\\O&O\end{bmatrix}$，且$A(\lambda)$的不变因子是其在相抵下的全系不变量。
+        \end{theorem}
+
+        \begin{proof}
+            由定理\ref{thm:poly_matrix_invariant}的证明易得。
+        \end{proof}
+
+        定理\ref{thm:poly_matrix_invariant}和定理\ref{thm:poly_matrix_Smith}解决了多项式矩阵在相抵下的标准型和全系不变量的问题，下面将给出$\mathbb{C}$上多项式矩阵在相抵下的另一种全系不变量。
+
+        \begin{definition}[初等因子，初等因子组]
+            多项式矩阵$A(\lambda)\in(\mathbb{F})^{m\times n}$的秩为$r$，阶不变因子为$d_1(\lambda),\cdots,d_r(\lambda)$，由$\mathbb{C}$是代数闭域，故$d_k(\lambda)$可分解为一次因式的乘积。由此可设
+            \begin{flalign*}
+                d_1(\lambda)&=(\lambda-\lambda_1)^{e_{11}}(\lambda-\lambda_2)^{e_{12}}\cdots(\lambda-\lambda_t)^{e_{1t}} \\
+                d_2(\lambda)&=(\lambda-\lambda_1)^{e_{21}}(\lambda-\lambda_2)^{e_{22}}\cdots(\lambda-\lambda_t)^{e_{2t}} \\
+                &\qquad\qquad\cdots\cdots\cdots\cdots \\
+                d_r(\lambda)&=(\lambda-\lambda_1)^{e_{r1}}(\lambda-\lambda_2)^{e_{r2}}\cdots(\lambda-\lambda_t)^{e_{rt}}
+            \end{flalign*}
+            其中$\lambda_1,\lambda_2,\cdots,\lambda_t$是两两不同的复数，$e_{ij}\in\mathbb{N}, i=1,2,\cdots,r, j=1,2,\cdots,t$，由$d_k(\lambda)|d_{k+1}(\lambda)$，有$0\leq e_{1j}\leq e_{2j}\leq\cdots\leq e_{rj}, j=1,2,\cdots,t$。当$e_{kl}>0$时，因子$(\lambda-\lambda_k)^{e_{kl}}$被称为矩阵$A(\lambda)$属于$\lambda_k$的初等因子，$A(\lambda)$的初等因子的全体称为$A(\lambda)$的初等因子组。
+        \end{definition}
+
+        \begin{theorem}
+            \label{thm:poly_matrix_elementary}
+            复数域上的多项式矩阵的秩和初等因子组是其在相抵下的全系不变量。
+        \end{theorem}
+
+        \begin{proof}
+            由定义可得不变因子可以唯一确定初等因子组和秩。
+
+            反之，设秩为$r$的$A(\lambda)$的初等因子组为$\{(\lambda-\lambda_p)^{e_{pq}}\}_{1\leq p\leq t}$，将其下标按$p$分组并按$e_{pq}$递增排列，并在最前面补充足够的1使得每组均有$r$个元素，得到增广因子组$\{(\lambda-\lambda_p)^{e_{pl}}\}_{\substack{1\leq p\leq t\\1\leq l\leq r}}$，由$d_k(\lambda)|d_{k+1}(\lambda)$，有$d_k(\lambda)=\prod\limits_{p=1}^{t}(\lambda-\lambda_p)^{e_{pk}}, 1\leq k\leq r$(思考原因)。如此初等因子组可以唯一确定不变因子。
+
+            由上，初等因子组与秩、不变因子是等价的，故秩和初等因子组是多项式矩阵在相抵下的全系不变量。
+        \end{proof}
+
+        \begin{note}
+            该定理中秩的条件是不可以删去的。
+        \end{note}
+
+    \section{Jordan标准型的概念与求法}
+
+        下面的定理给出方阵的相似与多项式矩阵相抵之间的重要联系。
+
+        \begin{theorem}
+            \label{thm:poly_matrix_similar}
+            $n$阶复方阵$A,B$相似$\Leftrightarrow$多项式矩阵$\lambda I_n-A,\lambda I_n-B$相抵。
+        \end{theorem}
+
+        \begin{proof}
+            $ $
+
+            若方阵$A,B$相似，则存在可逆方阵$P$使得$B=P^{-1}AP$。此时，$P$作为可逆多项式矩阵有$\lambda I_n-B=P^{-1}(\lambda I_n-A)P$，故$\lambda I_n-A,\lambda I_n-B$相抵。
+
+            反之，若$\lambda I_n-A,\lambda I_n-B$相抵，则存在可逆多项式矩阵$P(\lambda),Q(\lambda)$使得$P(\lambda)(\lambda I_n-A)Q(\lambda)=\lambda I_n-B$。设$Q(\lambda)=\sum\limits_{j=0}^{k}\lambda^j Q_{j},Q(\lambda)^{-1}=\sum\limits_{j=0}^{m}\lambda^j R_j$，设$W=Q(B)=\sum\limits_{j=0}^{k}Q_{j}B^j$。由$Q(\lambda)^{-1}Q(\lambda)=I_n$，有$\sum\limits_{j=0}^m R_j Q(\lambda)\lambda^j=I_n\Rightarrow\sum\limits_{j=0}^m R_j WB^j=I_n$。又$P(\lambda)(\lambda I_n-A)Q(\lambda)=\lambda I_n-B$，有$P(\lambda)^{-1}(\lambda I_n-B)=(\lambda I_n-A)Q(\lambda)=Q(\lambda)\lambda-AQ(\lambda)$。用$B$代替$\lambda$，有$Q(B)B=AQ(B)$，即$WB=AW$。由此得到$WB^l=A^l W,\forall l\in \mathbb{N}$。于是有$I_n=\sum\limits_{j=0}^m R_j WB^j=\sum\limits_{j=0}^m R_j A^j W=(\sum\limits_{j=0}^m R_j A^j)W$。这表明$W$是可逆矩阵且$B=W^{-1}AW$。
+        \end{proof}
+
+        \begin{note}
+            对$n$阶复方阵$A$，$\lambda I_n-A$被称为$A$的特征方阵。显然特征方阵是满秩的。
+        \end{note}
+
+        由定理\ref{thm:poly_matrix_elementary}和定理\ref{thm:poly_matrix_similar}，可以得到：
+
+        \begin{theorem}
+            $n$阶复方阵$A$与$B$相似的充要条件是它们的特征方阵$\lambda I_n-A,\lambda I_n-B$的初等因子组相同。也就是说，复方阵的特征方阵的初等因子组是复方阵在相似下的全系不变量。
+        \end{theorem}
+
+        在介绍复方阵的Jordan标准型的概念之前，还需要一个引理。
+
+        \begin{lemma}
+            \label{lemma:disg}
+            准对角多项式矩阵$A(\lambda)=\mathrm{diag}(A_1(\lambda),A_2(\lambda))$的初等因子组由对角块$A_1(\lambda),A_2(\lambda)$的初等因子组合并而成。
+        \end{lemma}
+
+        \begin{proof}
+            此处略去。
+        \end{proof}
+
+        以下给出复方阵的Jordan标准型的概念。
+
+        \begin{definition}[Jordan块，Jordan标准型]
+            记$N_m=\begin{bmatrix}0&1\\&0&1\\&&0&\ddots\\&&&\ddots&1\\&&&&0\end{bmatrix}_{m\times m}$，则形如$\lambda I_m+N_m$的矩阵被称为一个$m$阶Jordan块，记作$J_m(\lambda)$。Jordan标准型是由对角线由若干个Jordan块组成的准对角矩阵。
+        \end{definition}
+
+        \begin{theorem}
+            设$n$阶复方阵$A$的特征方阵$\lambda I_n-A$的初等因子组为
+            \begin{flalign*}
+                &(\lambda-\lambda_1)^{m_{11}},(\lambda-\lambda_1)^{m_{12}},\cdots,(\lambda-\lambda_1)^{m_{1k_1}}, \\
+                &(\lambda-\lambda_2)^{m_{21}},(\lambda-\lambda_2)^{m_{22}},\cdots,(\lambda-\lambda_2)^{m_{2k_2}}, \\
+                &\qquad\qquad\cdots\cdots\cdots\cdots \\
+                &(\lambda-\lambda_t)^{m_{t1}},(\lambda-\lambda_t)^{m_{t2}},\cdots,(\lambda-\lambda_t)^{m_{tk_t}},
+            \end{flalign*}
+
+            其中$m_{j1}\geq m_{j2}\geq\cdots\geq m_{jk_j}>0,j=1,2,\cdots,t$，且$\lambda_1,\lambda_2,\cdots,\lambda_t$两两不同。则复方阵$A$相似于如下的Jordan标准型：
+            \[
+                J=\mathrm{diag}(J_{m_{11}}(\lambda_1),\cdots,J_{m_{1k_1}}(\lambda_1),J_{m_{21}}(\lambda_2),\cdots,J_{m_{t1}}(\lambda_t),\cdots,J_{m_{tk_t}}(\lambda_t))
+            \]
+        \end{theorem}
+
+        \begin{proof}
+            对$k\in\mathbb{N},\lambda_0\in\mathbb{C}$，记$M=\lambda I_k-J_k(\lambda_0)=\begin{bmatrix}\lambda-\lambda_0&-1\\&\lambda-\lambda_0&-1\\&&\lambda-\lambda_0&\ddots\\&&&\ddots&-1\\&&&&\lambda-\lambda_0\end{bmatrix}$，
+
+            由$M\begin{pmatrix}1&2&\cdots&k-1\\2&3&\cdots&k\end{pmatrix}=(-1)^{k-1}$，故行列式因子$D_1(\lambda)=\cdots=D_{k-1}(\lambda)=1,D_k(\lambda)=(\lambda-\lambda_0)^k$，对应不变因子$d_1(\lambda)=\cdots=d_{k-1}(\lambda)=1,d_k(\lambda)=(\lambda-\lambda_0)^k$，因此$M$的初等因子组为$\{(\lambda-\lambda_0)^k\}$。由引理\ref{lemma:disg}，$\lambda I_n-J,\lambda I_n-A$的初等因子组相同，故$A$与$J$相似。
+        \end{proof}
+
+        最后总结求复方阵$A$的Jordan标准型的过程如下：
+
+        \begin{enumerate}
+            \item 求出特征方阵$\lambda I_n-A$的不变因子；
+            \item 把不变因子分解为一次因式的乘积，得到初等因子组；
+            \item 写出每个初等因子的Jordan块；
+            \item 把所有Jordan块进行合并，得到Jordan标准型。
+        \end{enumerate}
+
+        使得$P^{-1}AP$为Jordan标准型的可逆矩阵$P$称为过渡矩阵。过渡矩阵的求法如下：
+
+        \begin{enumerate}
+            \item 对特征方阵$\lambda I_n-A$施加初等$\lambda$变换，把$\lambda I_n-A$化为$\lambda I_n-J$，从而求出$n$阶可逆多项式矩阵$P(\lambda),Q(\lambda)$使得$P(\lambda)(\lambda I_n-A)Q(\lambda)=\lambda I_n-J$；
+            \item 求出$R(\lambda)=Q(\lambda)^{-1}$；
+            \item 把$R(\lambda)$写成矩阵的多项式$R(\lambda)=\sum\limits_{j=1}^m R_m \lambda^m$，则$P=R(A)$。
+        \end{enumerate}
+
+        该方法正确性的证明留给读者。
+
+    \section{Jordan标准型的应用}
+
+        \begin{example}
+            证明：$A,A^T$相似。
+        \end{example}
+
+        \begin{proof}
+            设$A$的Jordan标准型为$J$，即证$J,J^T$相似。设$J=\mathrm{diag}(J_{m_{11}}(\lambda_1),\cdots,J_{m_{tk_t}}(\lambda_t))$。
+
+            对$\forall 1\leq i\leq t,1\leq j\leq k_i$，容易求得$J_{m_{ij}}(\lambda_i),J_{m_{ij}}(\lambda_i)^T$的初等因子组均为$\{(\lambda-\lambda_i)^{m_{ij}}\}$，故存在可逆方阵$P_{ij}$使得$P_{ij}^{-1}J_{m_{ij}}(\lambda_i)P_{ij}=J_{m_{ij}}(\lambda_i)^T$，令$P=\mathrm{diag}(P_{11},\cdots,P_{tk_t})$，即有$P^{-1}JP=J^T$，即$A,A^T$相似。
+        \end{proof}
+
+        \begin{example}
+
+        \end{example}
+        
+
+% \begin{bmatrix}\end{bmatrix}
+% \vdots&\vdots&&\vdots\\
+% \vdots&\vdots&\vdots&&\vdots\\

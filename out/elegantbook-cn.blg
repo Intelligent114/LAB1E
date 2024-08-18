@@ -1,0 +1,15 @@
+[0] Config.pm:308> INFO - This is Biber 2.20
+[0] Config.pm:311> INFO - Logfile is 'elegantbook-cn.blg'
+[91] biber-MSWIN64:340> INFO - === 
+[125] Biber.pm:420> INFO - Reading 'elegantbook-cn.bcf'
+[213] Biber.pm:991> INFO - Using all citekeys in bib section 0
+[224] Biber.pm:4463> INFO - Processing section 0
+[234] Biber.pm:4654> INFO - Looking for bibtex file 'reference.bib' for section 0
+[295] bibtex.pm:1713> INFO - LaTeX decoding ...
+[305] bibtex.pm:1519> INFO - Found BibTeX data source 'E:\dev\LAE\ElegantBook-master\reference.bib'
+[345] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[345] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[345] Biber.pm:4283> INFO - Sorting list 'nty/global//global/global/global' of type 'entry' with template 'nty' and locale 'en-US'
+[345] Biber.pm:4289> INFO - No sort tailoring available for locale 'en-US'
+[349] bbl.pm:676> INFO - Writing 'elegantbook-cn.bbl' with encoding 'UTF-8'
+[352] bbl.pm:779> INFO - Output to elegantbook-cn.bbl
