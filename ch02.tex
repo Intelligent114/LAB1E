@@ -392,7 +392,7 @@
 
                 \begin{solution}
                     \begin{flalign*}
-                        &\quad\det\begin{bmatrix}a_1^n&a_1^{n-1}b_1&a_1^{n-2}b^2&\cdots&a_1 b_1^{n-1}&b_1^n\\a_2^n&a_2^{n-1}b_2&a_2^{n-2}b^2&\cdots&a_2 b_2^{n-1}&b_2^n\\\vdots&\vdots&\vdots&&\vdots&\vdots\\a_{n+1}^{n}&a_{n+1}^{n-1}b_{n+1}&a_{n+1}^{n-2}b^{n+1}&\cdots&a_{n+1}b_{n+1}^{n-1}&b_{n+1}^n\end{bmatrix}=\prod_{k=1}^{n+1}a_k^n\det\begin{bmatrix}1&\frac{b_1}{a_1}&\left(\frac{b_1}{a_1}\right)^2&\cdots&\left(\frac{b_1}{a_1}\right)^n\\1&\frac{b_2}{a_2}&\left(\frac{b_2}{a_2}\right)^2&\cdots&\left(\frac{b_2}{a_2}\right)^n\\\vdots&\vdots&\vdots&&\vdots&\vdots\\1&&\frac{b_{n+1}}{a_{n+1}}&\left(\frac{b_{n+1}}{a_{n+1}}\right)^2&\cdots&\left(\frac{b_{n+1}}{a_{n+1}}\right)^n\end{bmatrix} \\
+                        &\quad\det\begin{bmatrix}a_1^n&a_1^{n-1}b_1&a_1^{n-2}b^2&\cdots&a_1 b_1^{n-1}&b_1^n\\a_2^n&a_2^{n-1}b_2&a_2^{n-2}b^2&\cdots&a_2 b_2^{n-1}&b_2^n\\\vdots&\vdots&\vdots&&\vdots&\vdots\\a_{n+1}^{n}&a_{n+1}^{n-1}b_{n+1}&a_{n+1}^{n-2}b^{n+1}&\cdots&a_{n+1}b_{n+1}^{n-1}&b_{n+1}^n\end{bmatrix}=\prod_{k=1}^{n+1}a_k^n\det\begin{bmatrix}1&\frac{b_1}{a_1}&\left(\frac{b_1}{a_1}\right)^2&\cdots&\left(\frac{b_1}{a_1}\right)^n\\1&\frac{b_2}{a_2}&\left(\frac{b_2}{a_2}\right)^2&\cdots&\left(\frac{b_2}{a_2}\right)^n\\\vdots&\vdots&\vdots&&\vdots\\1&\frac{b_{n+1}}{a_{n+1}}&\left(\frac{b_{n+1}}{a_{n+1}}\right)^2&\cdots&\left(\frac{b_{n+1}}{a_{n+1}}\right)^n\end{bmatrix} \\
                         &=\prod_{k=1}^{n+1}a_k^n\cdot\prod_{1\leq i<j\leq n+1}\left(\frac{b_j}{a_j}-\frac{b_i}{a_i}\right)=\prod_{1\leq i<j\leq n+1}(a_i b_j-a_j b_i)
                     \end{flalign*}
                 \end{solution}
@@ -676,7 +676,7 @@
 
                     $\Rightarrow f(x)=C\prod\limits_{k=2}^{n}$。又$f(0)=(-1)^{n-1}\prod\limits_{k=2}^n a_k$，$f(a_1)=\Delta_n(a_1,a_2,\cdots,a_n)$，
 
-                    $f(0)=\det\begin{bmatrix}1&0&0&\cdots&0\\1&a_2&a_2^2&\cdots&a_2^{n-1}\\\vdots&\vdots&\vdots&&\vdots\\1&a_n&a_n^2&\cdots&a_n^{n-1}\end{bmatrix}=\det\begin{bmatrix}a_2&a_2^2&\cdots&a_2^{n-1}\\\vdots&\vdots&\vdots&&\vdots\\a_n&a_n^2&\cdots&a_n^{n-1}\end{bmatrix}=\prod\limits_{k=2}^n a_k\cdot\Delta_{n-1}(a_2,a_3,\cdots,a_n)$。
+                    $f(0)=\det\begin{bmatrix}1&0&0&\cdots&0\\1&a_2&a_2^2&\cdots&a_2^{n-1}\\\vdots&\vdots&\vdots&&\vdots\\1&a_n&a_n^2&\cdots&a_n^{n-1}\end{bmatrix}=\det\begin{bmatrix}a_2&a_2^2&\cdots&a_2^{n-1}\\\vdots&\vdots&&\vdots\\a_n&a_n^2&\cdots&a_n^{n-1}\end{bmatrix}=\prod\limits_{k=2}^n a_k\cdot\Delta_{n-1}(a_2,a_3,\cdots,a_n)$。
 
                     $\Rightarrow C=(-1)^{n-1}\Delta_{n-1}(a_2,a_3,\cdots,a_n)$，$\Delta_n(a_1,a_2,\cdots,a_n)=\Delta_{n-1}(a_2,a_3,\cdots,a_n)\prod\limits_{k=2}^n(a_k-a_1)$。
 

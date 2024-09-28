@@ -59,7 +59,7 @@
 
         \begin{theorem}
             \label{thm:poly_matrix_rank}
-            设$m\times n$多项式矩阵$A(\lambda)$的秩为$r$，则$A(\lambda)$可以经过有限次初等$\lambda$变换化为$\begin{bmatrix}D(\lambda)&O\\O&O\end{bmatrix}$的形式，其中$D(\lambda)=\mathrm{diag}(d_1(\lambda),\cdots,d_r(\lambda))$是$r$阶对角多项式方阵，$d_1(\lambda),\cdots,d_r(\lambda)$是首一多项式且$d_j(\lambda)|d_{j+1}(\lambda),\forall j=1,\cdots,r-1$。
+            设$m\times n$多项式矩阵$A(\lambda)$的秩为$r$，则$A(\lambda)$可以经过有限次初等$\lambda$变换化为$B(\lambda)=\begin{bmatrix}D(\lambda)&O\\O&O\end{bmatrix}$的形式，其中$D(\lambda)=\mathrm{diag}(d_1(\lambda),\cdots,d_r(\lambda))$是$r$阶对角多项式方阵，$d_1(\lambda),\cdots,d_r(\lambda)$是首一多项式且$d_j(\lambda)|d_{j+1}(\lambda),\forall j=1,\cdots,r-1$。
 
             等价的说，存在$s,t\in\mathbb{N}$，$m$阶初等$\lambda$方阵$P_1(\lambda),\cdots,P_s(\lambda)$和$n$阶初等$\lambda$方阵$Q_1(\lambda),\cdots,Q_t(\lambda)$使得
 
@@ -67,7 +67,31 @@
         \end{theorem}
 
         \begin{proof}
-            此处略去。
+            对零矩阵$A(\lambda)$，定理显然成立。因此可设$A=(a_{ij}(\lambda))_{n\times n}\neq0$。于是存在某个元素$a_{ij}(\lambda)\neq0$。对调矩阵第$1$行与第$i$行，第$1$列与第$j$列，则有$a_{11}(\lambda)\neq0$。因此可不妨假设$a_{11}(\lambda)\neq0$。
+
+            首先证明：多项式矩阵$A(\lambda)$可以经有限次初等$\lambda$变换化为多项式矩阵$C(\lambda)=(c_{ij}(\lambda))_{n\times n}$，其中$c_{11}(\lambda)\neq0$，且$c_{11}(\lambda)\mid c_{ij}(\lambda),\forall 1\leq i\leq m,1\leq j\leq n$。为此对次数$\deg a_{11}(\lambda)$归纳。
+
+            当$\deg a_{11}(\lambda)=0$时，$a_{11}(\lambda)$是$\mathbb{F}$中非零常数，显然$a_{11}(\lambda)\mid a_{ij}(\lambda),\forall 1\leq i\leq m,1\leq j\leq n$。因此结论对$\deg a_{11}(\lambda)=0$成立。假设结论对$\deg a_{11}(\lambda)\leq t-1$成立，现在考虑$\deg a_{11}(\lambda)=t$的情况。假设$\exists a_{ij}(\lambda)$使得$a_{11}(\lambda)\nmid a_{ij}(\lambda)$。
+
+            \begin{enumerate}
+                \item $i=1$，即$a_{11}(\lambda)\nmid a_{1j}(\lambda)$。由带余除法，$\exists q(\lambda),r(\lambda)\in\mathbb{F}[\lambda]$，使得$a_{1j}(\lambda)=q(\lambda)a_{11}(\lambda)+r(\lambda),\deg r(\lambda)<t$。把第$1$列的$-q(\lambda)$倍加到第$j$列，再对调第$1$列与第$j$列，这个矩阵$(1,1)$位置上的元素就是$r(\lambda)$，且$\deg r(\lambda)<t$，使用归纳假设，有结论成立。
+                \item $j=1$，将上一情形的列改为行即可。
+                \item $a_{11}(\lambda)$整除每一个$a_{1j}$与$a_{i1}$，且$a_{ij}(\lambda)\nmid a_{kl}(\lambda),k\neq1,l\neq1$。此时设$a_{1j}(\lambda)=q_j(\lambda)a_{11}(\lambda),a_{i1}(\lambda)=p_i(\lambda)a_{11}(\lambda),p_i(\lambda),q_j(\lambda)\in\mathbb{F}[\lambda]$，把第$1$行的$-p_i(\lambda)$倍加到第$i$行，再把第$1$列的$-q_j(\lambda)$倍加到第$j$列，得到多项式矩阵：
+                      \[ \begin{bmatrix}a_{11}(\lambda)&0&0&\cdots&0\\0&\tilde{a}_{22}(\lambda)&\tilde{a}_{23}(\lambda)&\cdots&\tilde{a}_{2n}(\lambda)\\\vdots&\vdots&\vdots&&\vdots\\0&\tilde{a}_{m2}(\lambda)&\tilde{a}_{m3}(\lambda)&\cdots&\tilde{a}_{mn}(\lambda)\end{bmatrix}  \]
+                      此时如果$a_{11}(\lambda)$整除每个$\tilde{a}_{ij}(\lambda)$，则结论成立。否则，设$a_{11}(\lambda)\nmid\tilde{a}_{kl}(\lambda)$，把这个多项式矩阵的第$m$行加到第$1$行，则化为情形1，所以结论成立。
+            \end{enumerate}
+
+            由上述讨论可知，多项式矩阵$A(\lambda)$可以经有限次初等$\lambda$变换化为多项式矩阵$C(\lambda)=(c_{ij}(\lambda))_{n\times n}$，其中$c_{11}(\lambda)\neq0$，且$c_{11}(\lambda)\mid c_{ij}(\lambda),\forall 1\leq i\leq m,1\leq j\leq n$。设$c_{i1}(\lambda)=f_i(\lambda)c_{11}(\lambda),c_{1j}(\lambda)=g_j(\lambda)c_{11}(\lambda)$，把第$1$行的$-f_i(\lambda)$倍加到第$i$行，再把第$1$列的$-g_j(\lambda)$倍加到第$j$列，得到多项式矩阵：
+            \begin{equation} \begin{bmatrix}c_{11}(\lambda)&0&0&\cdots&0\\0&b_{22}(\lambda)&b_{23}(\lambda)&\cdots&b_{2n}(\lambda)\\\vdots&\vdots&\vdots&&\vdots\\0&b_{m2}(\lambda)&b{m3}(\lambda)&\cdots&b_{mn}(\lambda)\end{bmatrix}  \end{equation}
+            此时仍有$c_{11}\mid b_{ij}(\lambda)$。记$A_1(\lambda)=(b_{kl}(\lambda))_{(m-1)\times(n-1)},2\leq k\leq m,2\leq l\leq n$。对多项式矩阵$A_1(\lambda)$重复上述过程，则多项式矩阵$A_1(\lambda)$可经有限次初等$\lambda$变换化为
+            \[ \begin{bmatrix}c_{22}(\lambda)&0\\0&A_2(\lambda)\end{bmatrix} \]
+            其中$c_{22}(\lambda)$整除$A_2(\lambda)$的每个元素。于是原来的矩阵可化为
+            \begin{equation} \begin{bmatrix}c_{11}(\lambda)&0&0\\0&c_{22}(\lambda)&0\\0&0&A_2(\lambda)\end{bmatrix} \end{equation}
+            由于对$A_1(\lambda)$施加初等$\lambda$不改变其元素被$c_{11}(\lambda)$整除的性质，故$c_{11}(\lambda)$整除$c_{22}(\lambda)$及$A_2(\lambda)$的所有元素。且$c_{22}(\lambda)$整除$A_2(\lambda)$的所有元素。
+
+            重复上述过程，多项式矩阵$A(\lambda)$可经有限次初等$\lambda$变换化为以下形式：
+            \[ \begin{bmatrix}\begin{bmatrix}c_{11}(\lambda)&0&\cdots&0\\0&c_{22}(\lambda)&\cdots&0\\\vdots&\vdots&&\vdots\\0&0&\cdots&c_{kk}(\lambda)\end{bmatrix}&0\\0&0\end{bmatrix} \]
+            其中非零多项式$c_{11}(\lambda),c_{22}(\lambda),\cdots,c_{kk}(\lambda)$满足$c_{ii}(\lambda)\mid c_{i+1.i+1}(\lambda),\forall 1\leq i\leq k-1$。由于初等$\lambda$变换不改变多项式矩阵的秩，故$k=\mathrm{rank}(A(\lambda))=r$。设$c_{ii}$的首项系数为$b_i$，则把以上矩阵的第$i$行乘$b_i^{-1}$，就可以把多项式矩阵$A(\lambda)$化为$B(\lambda)$，因此定理得证。
         \end{proof}
 
         \begin{theorem}
@@ -103,7 +127,12 @@
         \end{lemma}
 
         \begin{proof}
-            此处略去。
+            只考虑$p\leq q$的情形。
+            \begin{flalign*}
+                \det(AB)&=\det\begin{bmatrix}\sum_{i_1=1}^q a_{1i_1}b_{i_1 1}&\cdots&\sum_{i_p=1}^q a_{1i_p}b_{i_p p}\\\vdots&&\vdots\\\sum_{i_1=1}^q a_{pi_1}b_{i_1 1}&\cdots&\sum_{i_p=1}^q a_{pi_p}b_{i_p p}\end{bmatrix}=\sum_{i_1=1}^q\cdots\sum_{i_p=1}^q\det\begin{bmatrix}a_{1i_1}b_{i_1 1}&\cdots&a_{1i_p}b_{i_p p}\\\vdots&&\vdots\\a_{pi_1}b_{i_1 1}&\cdots&a_{pi_p}b_{i_p p}\end{bmatrix} \\
+                        &=\sum_{i_1=1}^q\cdots\sum_{i_p=1}^q\det\begin{bmatrix}a_{1i_1}&\cdots&a_{1i_p}\\\vdots&&\vdots\\a_{pi_1}&\cdots&a_{pi_p}\end{bmatrix}\prod_{j=1}^p b_{i_j j}
+                        &\xlongequal{(*)}
+            \end{flalign*}
         \end{proof}
 
         \begin{proposition}
